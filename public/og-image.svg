@@ -1,0 +1,19 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" rx="40" fill="#F8F6F3"/>
+  <circle cx="1043" cy="118" r="144" fill="#4ECDC4" fill-opacity="0.18"/>
+  <circle cx="176" cy="527" r="152" fill="#45B7D1" fill-opacity="0.18"/>
+  <rect x="84" y="82" width="1032" height="466" rx="36" fill="#1A3A4A"/>
+  <rect x="142" y="145" width="168" height="56" rx="28" fill="white" fill-opacity="0.1"/>
+  <text x="175" y="180" fill="#4ECDC4" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="4">DOG FRIENDLY IMABARI</text>
+  <text x="142" y="286" fill="white" font-family="Arial, sans-serif" font-size="84" font-weight="800">WanMap</text>
+  <text x="142" y="364" fill="white" fill-opacity="0.78" font-family="Arial, sans-serif" font-size="34" font-weight="500">
+    犬と歩く今治が、すぐ見つかる。
+  </text>
+  <text x="142" y="418" fill="white" fill-opacity="0.62" font-family="Arial, sans-serif" font-size="28" font-weight="500">
+    実地図ベースのスポット・コース・緊急情報ガイド
+  </text>
+  <rect x="142" y="455" width="206" height="58" rx="29" fill="white"/>
+  <text x="183" y="492" fill="#1A3A4A" font-family="Arial, sans-serif" font-size="28" font-weight="700">
+    Imabari, Ehime
+  </text>
+</svg>
