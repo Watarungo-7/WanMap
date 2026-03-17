@@ -10,14 +10,21 @@ import { MapPinned } from "lucide-react";
 import { levelMeta, mapConfig } from "@/data/spots";
 import type { Spot } from "@/types";
 
+const defaultMapTiles = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+const rasterTileUrl =
+  process.env.NEXT_PUBLIC_MAP_TILE_URL?.trim() || defaultMapTiles;
+const rasterAttribution =
+  process.env.NEXT_PUBLIC_MAP_ATTRIBUTION?.trim() ||
+  "© OpenStreetMap contributors";
+
 const mapStyle: StyleSpecification = {
   version: 8,
   sources: {
     osm: {
       type: "raster",
-      tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
+      tiles: [rasterTileUrl],
       tileSize: 256,
-      attribution: "© OpenStreetMap contributors",
+      attribution: rasterAttribution,
     },
   },
   layers: [
@@ -81,6 +88,37 @@ export function MapView({ spots, selectedSpotId, onSelectSpot }: MapViewProps) {
       markerStore.clear();
       map.remove();
       mapRef.current = null;
+    };
+  }, []);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    const container = containerRef.current;
+
+    if (!map || !container) {
+      return;
+    }
+
+    const resizeMap = () => {
+      requestAnimationFrame(() => {
+        map.resize();
+      });
+    };
+
+    resizeMap();
+
+    const observer = new ResizeObserver(() => {
+      resizeMap();
+    });
+
+    observer.observe(container);
+    window.addEventListener("resize", resizeMap);
+    window.addEventListener("orientationchange", resizeMap);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", resizeMap);
+      window.removeEventListener("orientationchange", resizeMap);
     };
   }, []);
 
@@ -189,7 +227,7 @@ export function MapView({ spots, selectedSpotId, onSelectSpot }: MapViewProps) {
         <div className="space-y-3">
           <div className="flex justify-end">
             <div className="rounded-full bg-white/82 px-3 py-2 text-[11px] font-medium text-[#1a3a4a]/62 shadow-[0_12px_28px_rgba(26,58,74,0.16)] backdrop-blur-md">
-              Map data: OpenStreetMap
+              Map data: {rasterAttribution}
             </div>
           </div>
           <div className="rounded-[28px] bg-white/88 p-4 shadow-[0_18px_45px_rgba(26,58,74,0.18)] backdrop-blur-md">

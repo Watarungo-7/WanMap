@@ -26,7 +26,10 @@ export function BottomNav() {
   const pathname = usePathname();
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-4 z-50 px-4">
+    <div
+      className="pointer-events-none fixed inset-x-0 z-50 px-4"
+      style={{ bottom: "calc(env(safe-area-inset-bottom, 0px) + 1rem)" }}
+    >
       <nav className="pointer-events-auto mx-auto flex w-full max-w-[480px] items-center justify-between gap-2 rounded-[28px] border border-white/65 bg-[#1a3a4a]/92 p-2 shadow-[0_24px_60px_rgba(26,58,74,0.35)] backdrop-blur-xl">
         {items.map((item) => {
           const Icon = item.icon;

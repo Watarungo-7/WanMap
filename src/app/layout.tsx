@@ -7,7 +7,7 @@ import "./globals.css";
 import { BottomNav } from "@/components/BottomNav";
 import { Header } from "@/components/Header";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://wanmap.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://wan-map.vercel.app";
 
 const notoSans = Noto_Sans_JP({
   subsets: ["latin"],
